@@ -3,7 +3,7 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Aumento da lista de palavras usando o chatgpt para gerá-las
+#1 - Exibir dica de categoria
 
 class Palavra:
     palavra = []
