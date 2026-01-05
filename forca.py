@@ -138,6 +138,8 @@ def Main():
         match opcao:
             case 1:
                 VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra)
+            case 2:
+                print(p.categoria)
             case 3:
                 if input("Digite a tentativa: ") == p.palavra:
                     print("Você Acertou!!\n")
