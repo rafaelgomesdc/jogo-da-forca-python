@@ -3,10 +3,7 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Migrando a exibição para o Menu()
-#importante: A palavra não mostra mais as letras após o acerto
-
-p_tentativa = ""
+#1 - Corrigido a exibição da palavra com as letras acertadas
 
 class Palavra:
     palavra = []
@@ -38,7 +35,7 @@ def Menu(p_tentativa, letras_tentadas, p):
     print("{:<50} {:<50}".format("Letras tentadas", "OPÇÕES"))
     print("{:<50} {:<50}".format("".join(letras_tentadas), "1 - Tentar letra"))
     print("{:<50} {:<50}".format("", "2 - Dica"))
-    print("{:<50} {:<50}".format("_"*len(p.palavra), "3 - Tentar palavra"))
+    print("{:<50} {:<50}".format("".join(p_tentativa), "3 - Tentar palavra"))
     print("{:<50} {:<50}".format("", "4 - Desistir"))
     print("."*100)
 
@@ -78,6 +75,8 @@ def VerificarLetra(letra, p_tentativa, palavra):
                     p_tentativa[l] = palavra[l]
                 case "â":
                     p_tentativa[l] = palavra[l]
+                case "a":
+                    p_tentativa[l] = palavra[l]
         elif letra == "e":
             match palavra[l]:
                 case "é":
@@ -86,6 +85,8 @@ def VerificarLetra(letra, p_tentativa, palavra):
                     p_tentativa[l] = palavra[l]
                 case "ê":
                     p_tentativa[l] = palavra[l]
+                case "e":
+                    p_tentativa[l] = palavra[l]
         elif letra == "i":
             match palavra[l]:
                 case "í":
@@ -93,6 +94,8 @@ def VerificarLetra(letra, p_tentativa, palavra):
                 case "ì":
                     p_tentativa[l] = palavra[l]
                 case "î":
+                    p_tentativa[l] = palavra[l]
+                case "i":
                     p_tentativa[l] = palavra[l]
         elif letra == "o":
             match palavra[l]:
@@ -104,32 +107,35 @@ def VerificarLetra(letra, p_tentativa, palavra):
                     p_tentativa[l] = palavra[l]
                 case "ô":
                     p_tentativa[l] = palavra[l]
+                case "o":
+                    p_tentativa[l] = palavra[l]
         elif letra == "u":
             match palavra[l]:
                 case "ú":
                     p_tentativa[l] = palavra[l]
                 case "ù":
                     p_tentativa[l] = palavra[l]
-        elif letra == palavra[l]:
-            if l == 0:
-                p_tentativa = palavra[l].upper()
-            else:
-                p_tentativa = palavra[l]
+                case "u":
+                    p_tentativa[l] = palavra[l]
+        
+        p_tentativa[0] = p_tentativa[0].upper()
 
     print("".join(p_tentativa)) #Exibe a palavra após a tentativa
+
+    print("Passou pela verificação.")
 
 def Main():
     p = definirPalavra(lista)
     p_tentativa = [] #Palavra com as letras tentadas incluídas
     letras_tentadas = [] #Lista de letras tentadas
 
-    print(f"Palavra de {len(p.palavra)} letras.")
-    print("_"*len(p.palavra),"\n")
-
-    opcao = Menu(p_tentativa, letras_tentadas, p)
-
     for l in range(len(p.palavra)):
         p_tentativa.append("_")
+
+    #print(f"Palavra de {len(p.palavra)} letras.")
+    #print("_"*len(p.palavra),"\n")
+
+    opcao = Menu(p_tentativa, letras_tentadas, p)
 
     while opcao > 0 and opcao <= 4  or opcao == 69:
         match opcao:
@@ -162,5 +168,6 @@ def Main():
                     case 5:
                         Main()
         opcao = Menu(p_tentativa, letras_tentadas, p)
+
 
 Main()
