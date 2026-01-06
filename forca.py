@@ -111,7 +111,7 @@ def VerificarLetra(letra, p_tentativa, palavra):
     for l in range(len(palavra)):
         if letra == palavra[l]:
             if l == 0:
-                p_tentativa[l] = palavra[l].upper()
+                p_tentativa[l] = palavra[l].upper() #Define a primeira letra como maiúscula
             else:
                 p_tentativa[l] = palavra[l]
         elif letra == "a":
