@@ -3,8 +3,10 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Mapeando o código para facilitar o entendimento
-#2 - Definindo o formato do terminal (no arquivo teste.py)
+#1 - Migrando a exibição para o Menu()
+#importante: A palavra não mostra mais as letras após o acerto
+
+p_tentativa = ""
 
 class Palavra:
     palavra = []
@@ -32,9 +34,16 @@ def opcDev(palavra, p_tentativa, letras_tentadas):
     return opcao
 
 #Menu principal
-def Menu():
-    print("\nOPÇÕES")
-    print("1 = Tentar Letra\n2 = Dica\n3 = Tentar palavra\n4 = Desistir")
+def Menu(p_tentativa, letras_tentadas, p):
+    print("{:<50} {:<50}".format("Letras tentadas", "OPÇÕES"))
+    print("{:<50} {:<50}".format("".join(letras_tentadas), "1 - Tentar letra"))
+    print("{:<50} {:<50}".format("", "2 - Dica"))
+    print("{:<50} {:<50}".format("_"*len(p.palavra), "3 - Tentar palavra"))
+    print("{:<50} {:<50}".format("", "4 - Desistir"))
+    print("."*100)
+
+    #print("\nOPÇÕES")
+    #print("1 = Tentar Letra\n2 = Dica\n3 = Tentar palavra\n4 = Desistir")
 
     return int(input("\nDigite a opção desejada: "))
 
@@ -117,7 +126,7 @@ def Main():
     print(f"Palavra de {len(p.palavra)} letras.")
     print("_"*len(p.palavra),"\n")
 
-    opcao = Menu()
+    opcao = Menu(p_tentativa, letras_tentadas, p)
 
     for l in range(len(p.palavra)):
         p_tentativa.append("_")
@@ -152,6 +161,6 @@ def Main():
                         print("".join(p.palavra), "".join(p_tentativa), "".join(letras_tentadas))
                     case 5:
                         Main()
-        opcao = Menu()
+        opcao = Menu(p_tentativa, letras_tentadas, p)
 
 Main()
