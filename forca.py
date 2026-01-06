@@ -3,7 +3,8 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Exibir dica de categoria
+#1 - Mapeando o código para facilitar o entendimento
+#2 - Definindo o formato do terminal (no arquivo teste.py)
 
 class Palavra:
     palavra = []
@@ -65,9 +66,9 @@ def VerificarLetra(letra, p_tentativa, palavra):
                 case "à":
                     p_tentativa[l] = palavra[l]
                 case "ã":
-                    p_tentativa[l] = palavra [l]
+                    p_tentativa[l] = palavra[l]
                 case "â":
-                    p_tentativa[l] = palavra [l]
+                    p_tentativa[l] = palavra[l]
         elif letra == "e":
             match palavra[l]:
                 case "é":
@@ -106,25 +107,12 @@ def VerificarLetra(letra, p_tentativa, palavra):
             else:
                 p_tentativa = palavra[l]
 
-        #passar for de baixo pra cá
-
-    for l in range(len(palavra)):
-        if letra == palavra[l]:
-            if l == 0:
-                p_tentativa[l] = palavra[l].upper()
-            else:
-                p_tentativa[l] = palavra[l]
-        elif letra == "a":
-            match palavra[l]:
-                case "á":
-                    p_tentativa[l] = palavra[l]
-
-    print("".join(p_tentativa))
+    print("".join(p_tentativa)) #Exibe a palavra após a tentativa
 
 def Main():
     p = definirPalavra(lista)
-    p_tentativa = []
-    letras_tentadas = []
+    p_tentativa = [] #Palavra com as letras tentadas incluídas
+    letras_tentadas = [] #Lista de letras tentadas
 
     print(f"Palavra de {len(p.palavra)} letras.")
     print("_"*len(p.palavra),"\n")
