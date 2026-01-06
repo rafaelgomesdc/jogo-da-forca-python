@@ -3,7 +3,7 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Corrigido a exibição da palavra com as letras acertadas
+#1 - Mudança na aparência da interface
 
 class Palavra:
     palavra = []
@@ -24,7 +24,16 @@ def definirPalavra(ls):
 
 #Opções disponíveis apenas durante o desenvolvimento
 def opcDev(palavra, p_tentativa, letras_tentadas):
-    print("\n\n***OPÇÕES DO DESENVOLVEDOR***\n\n1 - Mostrar palavra\n2 - Mostrar palavra com letras acertadas\n3 - Mostrar letras tentadas\n4 - Mostrar tudo\n5 - Nova Palavra\n\n")
+    print("""
+          
+    ***OPÇÕES DO DESENVOLVEDOR***
+    1 - Mostrar palavra
+    2 - Mostrar palavra com letras acertadas
+    3 - Mostrar letras tentadas
+    4 - Mostrar tudo
+    5 - Nova Palavra
+          
+    """)
     opcao = int(input("Digite a opção desejada: "))
     print("\n")
 
@@ -32,11 +41,11 @@ def opcDev(palavra, p_tentativa, letras_tentadas):
 
 #Menu principal
 def Menu(p_tentativa, letras_tentadas, p):
-    print("{:<50} {:<50}".format("Letras tentadas", "OPÇÕES"))
-    print("{:<50} {:<50}".format("".join(letras_tentadas), "1 - Tentar letra"))
-    print("{:<50} {:<50}".format("", "2 - Dica"))
-    print("{:<50} {:<50}".format("".join(p_tentativa), "3 - Tentar palavra"))
-    print("{:<50} {:<50}".format("", "4 - Desistir"))
+    print("{:<50} {:<5} {:<50}".format("Letras tentadas", "|", "OPÇÕES"))
+    print("{:<50} {:<5} {:<50}".format("".join(letras_tentadas), "|", "1 - Tentar letra"))
+    print("{:<50} {:<5} {:<50}".format("", "|", "2 - Dica"))
+    print("{:<50} {:<5} {:<50}".format("".join(p_tentativa), "|", "3 - Tentar palavra"))
+    print("{:<50} {:<5} {:<50}".format("", "|", "4 - Desistir"))
     print("."*100)
 
     #print("\nOPÇÕES")
