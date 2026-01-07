@@ -5,6 +5,10 @@ import random
 #Últimas mudanças:
 #1 - Mudança na aparência da interface
 
+#A fazer:
+#1 - Adicionar contagem de tentativas restantes
+#2 - Adicionar exibição da "forca" de acordo com as tentativas restantes no terminal
+
 class Palavra:
     palavra = []
     categoria = ""
