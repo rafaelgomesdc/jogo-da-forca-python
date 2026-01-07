@@ -3,11 +3,10 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Mudança na aparência da interface
+#1 - Adicionado Contagem de erros
 
 #A fazer:
-#1 - Adicionar contagem de tentativas restantes
-#2 - Adicionar exibição da "forca" de acordo com as tentativas restantes no terminal
+#1 - Corrigir bug do contador de erros não somar
 
 class Palavra:
     palavra = []
@@ -44,12 +43,14 @@ def opcDev(palavra, p_tentativa, letras_tentadas):
     return opcao
 
 #Menu principal
-def Menu(p_tentativa, letras_tentadas, p):
-    print("{:<50} {:<5} {:<50}".format("Letras tentadas", "|", "OPÇÕES"))
-    print("{:<50} {:<5} {:<50}".format("".join(letras_tentadas), "|", "1 - Tentar letra"))
-    print("{:<50} {:<5} {:<50}".format("", "|", "2 - Dica"))
-    print("{:<50} {:<5} {:<50}".format("".join(p_tentativa), "|", "3 - Tentar palavra"))
-    print("{:<50} {:<5} {:<50}".format("", "|", "4 - Desistir"))
+def Menu(p_tentativa, letras_tentadas, p, erros):
+    print("\n\n\n")
+    print("{:<40} {:<5} {:<50}".format("Letras tentadas", "|", "OPÇÕES"))
+    print("{:<40} {:<5} {:<50}".format(f"Erros: {erros}", "|", ""))
+    print("{:<40} {:<5} {:<50}".format("".join(letras_tentadas), "|", "1 - Tentar letra"))
+    print("{:<40} {:<5} {:<50}".format("", "|", "2 - Dica"))
+    print("{:<40} {:<5} {:<50}".format("".join(p_tentativa), "|", "3 - Tentar palavra"))
+    print("{:<40} {:<5} {:<50}".format("", "|", "4 - Desistir"))
     print("."*100)
 
     #print("\nOPÇÕES")
@@ -76,71 +77,100 @@ def TentaLetra(vet_letras):
     return letra
 
 #
-def VerificarLetra(letra, p_tentativa, palavra):
+def VerificarLetra(letra, p_tentativa, palavra, erros):
+    erro = True
+
     for l in range(len(palavra)):
         if letra == "a":
             match palavra[l]:
                 case "á":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "à":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "ã":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "â":
                     p_tentativa[l] = palavra[l]
-                case "a":
-                    p_tentativa[l] = palavra[l]
+                    erro = False
+                #case "a":
+                #    p_tentativa[l] = palavra[l]
+                #erro = False
         elif letra == "e":
             match palavra[l]:
                 case "é":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "è":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "ê":
                     p_tentativa[l] = palavra[l]
-                case "e":
-                    p_tentativa[l] = palavra[l]
+                    erro = False
+                #case "e":
+                #    p_tentativa[l] = palavra[l]
+                #erro = False
         elif letra == "i":
             match palavra[l]:
                 case "í":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "ì":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "î":
                     p_tentativa[l] = palavra[l]
-                case "i":
-                    p_tentativa[l] = palavra[l]
+                    erro = False
+                #case "i":
+                #    p_tentativa[l] = palavra[l]
+                #erro = False
         elif letra == "o":
             match palavra[l]:
                 case "ó":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "ò":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "õ":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "ô":
                     p_tentativa[l] = palavra[l]
-                case "o":
-                    p_tentativa[l] = palavra[l]
+                    erro = False
+                #case "o":
+                #    p_tentativa[l] = palavra[l]
+                #erro = False
         elif letra == "u":
             match palavra[l]:
                 case "ú":
                     p_tentativa[l] = palavra[l]
+                    erro = False
                 case "ù":
                     p_tentativa[l] = palavra[l]
-                case "u":
-                    p_tentativa[l] = palavra[l]
+                    erro = False
+                #case "u":
+                #    p_tentativa[l] = palavra[l]
+        
+        if letra == palavra[l]:
+            p_tentativa[l] = letra
+            erro = False
         
         p_tentativa[0] = p_tentativa[0].upper()
+        
+    if erro:
+        erros += 1
 
     print("".join(p_tentativa)) #Exibe a palavra após a tentativa
-
-    print("Passou pela verificação.")
+    print(erros) #Exibe a quantidade de erros
 
 def Main():
     p = definirPalavra(lista)
     p_tentativa = [] #Palavra com as letras tentadas incluídas
     letras_tentadas = [] #Lista de letras tentadas
+    erros = 0
 
     for l in range(len(p.palavra)):
         p_tentativa.append("_")
@@ -148,12 +178,12 @@ def Main():
     #print(f"Palavra de {len(p.palavra)} letras.")
     #print("_"*len(p.palavra),"\n")
 
-    opcao = Menu(p_tentativa, letras_tentadas, p)
+    opcao = Menu(p_tentativa, letras_tentadas, p, erros)
 
     while opcao > 0 and opcao <= 4  or opcao == 69:
         match opcao:
             case 1:
-                VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra)
+                VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra, erros)
             case 2:
                 print(p.categoria)
             case 3:
@@ -180,7 +210,7 @@ def Main():
                         print("".join(p.palavra), "".join(p_tentativa), "".join(letras_tentadas))
                     case 5:
                         Main()
-        opcao = Menu(p_tentativa, letras_tentadas, p)
+        opcao = Menu(p_tentativa, letras_tentadas, p, erros)
 
 
 Main()
