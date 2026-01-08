@@ -3,7 +3,8 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Corrigido erro contador de erros não somar
+#1 - Sistema de derrota completo
+#2 - Interface otimizada
 
 #A fazer:
 #1 - 
@@ -211,7 +212,7 @@ def Main():
                         Main()
 
         if erros >= 6:
-            print("Você perdeu!")
+            print("\nVocê perdeu!\n")
             if int(input("1 = Jogar novamente\n2 = Encerrar\nOpção desejada: ")) == 1:
                 Main()
             else:
