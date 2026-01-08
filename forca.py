@@ -44,7 +44,7 @@ def opcDev(palavra, p_tentativa, letras_tentadas):
 
 #Menu principal
 def Menu(p_tentativa, letras_tentadas, p, erros):
-    print("\n\n\n")
+    print("."*100, "\n")
     print("{:<40} {:<5} {:<50}".format("Letras tentadas", "|", "OPÇÕES"))
     print("{:<40} {:<5} {:<50}".format(f"Erros: {erros}", "|", ""))
     print("{:<40} {:<5} {:<50}".format("".join(letras_tentadas), "|", "1 - Tentar letra"))
@@ -163,9 +163,6 @@ def VerificarLetra(letra, p_tentativa, palavra, erros):
     if erro:
         erros += 1
 
-    print("".join(p_tentativa)) #Exibe a palavra após a tentativa
-    print(erros) #Exibe a quantidade de erros
-
     return erros;
 
 def Main():
@@ -187,7 +184,7 @@ def Main():
             case 1:
                 erros = VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra, erros)
             case 2:
-                print(p.categoria)
+                print("\nDica: ", p.categoria)
             case 3:
                 if input("Digite a tentativa: ") == p.palavra:
                     print("Você Acertou!!\n")
@@ -196,7 +193,7 @@ def Main():
                     else:
                         break
                 else:
-                    pass
+                    print("Palavra incorreta.")
             case 4:
                 break
             case 69:
@@ -212,6 +209,15 @@ def Main():
                         print("".join(p.palavra), "".join(p_tentativa), "".join(letras_tentadas))
                     case 5:
                         Main()
+
+        if erros >= 6:
+            print("Você perdeu!")
+            if int(input("1 = Jogar novamente\n2 = Encerrar\nOpção desejada: ")) == 1:
+                Main()
+            else:
+                break
+            
+
         opcao = Menu(p_tentativa, letras_tentadas, p, erros)
 
 
