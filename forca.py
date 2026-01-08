@@ -3,10 +3,10 @@ from dtbs import lista_de_palavras as lista
 import random
 
 #Últimas mudanças:
-#1 - Adicionado Contagem de erros
+#1 - Corrigido erro contador de erros não somar
 
 #A fazer:
-#1 - Corrigir bug do contador de erros não somar
+#1 - 
 
 class Palavra:
     palavra = []
@@ -166,6 +166,8 @@ def VerificarLetra(letra, p_tentativa, palavra, erros):
     print("".join(p_tentativa)) #Exibe a palavra após a tentativa
     print(erros) #Exibe a quantidade de erros
 
+    return erros;
+
 def Main():
     p = definirPalavra(lista)
     p_tentativa = [] #Palavra com as letras tentadas incluídas
@@ -183,7 +185,7 @@ def Main():
     while opcao > 0 and opcao <= 4  or opcao == 69:
         match opcao:
             case 1:
-                VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra, erros)
+                erros = VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra, erros)
             case 2:
                 print(p.categoria)
             case 3:
