@@ -180,7 +180,7 @@ def Main():
 
     opcao = Menu(p_tentativa, letras_tentadas, p, erros)
 
-    while opcao > 0 and opcao <= 4  or opcao == 69:
+    while opcao > 0 and opcao <= 4  or opcao == 9:
         match opcao:
             case 1:
                 erros = VerificarLetra(TentaLetra(letras_tentadas), p_tentativa, p.palavra, erros)
