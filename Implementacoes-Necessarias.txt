@@ -1,3 +1,0 @@
-Implementar:
-    1 - Método para verificar acentuação;
-    2 - Método para dar dicas;
