@@ -2,6 +2,7 @@ from .menu import Menu
 from .verificacao import Verificar_Letra, Tenta_Letra
 from .palavra import Palavra
 from data.dtbs import lista_de_palavras as lista
+from .opcoes_dev import opcoes_dev
 
 def game_loop():
     p = Palavra()
@@ -36,7 +37,7 @@ def game_loop():
             case 4:
                 break
             case 69:
-                opcaoDev = opcDev(p.palavra, p_tentativa, letras_tentadas)
+                opcaoDev = opcoes_dev(p.palavra, p_tentativa, letras_tentadas)
                 match opcaoDev:
                     case 1:
                         print("".join(p.palavra))

@@ -1,4 +1,4 @@
-def TentaLetra(vet_letras):
+def Tenta_Letra(vet_letras):
     letra = input("\nDigite a letra: ").lower()
     repetida = False
 
@@ -15,7 +15,7 @@ def TentaLetra(vet_letras):
 
     return letra
 
-def VerificarLetra(letra, p_tentativa, palavra, erros):
+def Verificar_Letra(letra, p_tentativa, palavra, erros):
     erro = True
 
     for l in range(len(palavra)):
