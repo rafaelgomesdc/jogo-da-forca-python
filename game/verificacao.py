@@ -9,13 +9,13 @@ def Tenta_Letra(vet_letras):
     if repetida == True:
         print("\nLetra repetida.\n")
         print("Tente novamente, outra letra.")
-        TentaLetra(vet_letras)
+        Tenta_Letra(vet_letras)
     else:
         vet_letras.append(letra)
 
     return letra
 
-def Verificar_Letra(letra, p_tentativa, palavra, erros):
+def Verificar_Letra(letra, p_tentativa, palavra):
     erro = True
 
     for l in range(len(palavra)):
@@ -98,7 +98,4 @@ def Verificar_Letra(letra, p_tentativa, palavra, erros):
         
         p_tentativa[0] = p_tentativa[0].upper()
         
-    if erro:
-        erros += 1
-
-    return erros;
+    return erro

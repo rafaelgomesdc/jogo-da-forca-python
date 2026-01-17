@@ -6,7 +6,7 @@ class Palavra:
     popularidade = ""
 
     def definir_palavra(self, ls):
-        i = random.randint(0, len(ls))
+        i = random.randint(0, len(ls) - 1)
         print(i)
         p_data = ls[i].split("_")
         self.palavra = p_data[0]

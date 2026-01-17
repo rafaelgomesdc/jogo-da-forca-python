@@ -1,4 +1,4 @@
-def opcoes_dev(palavra, p_tentativa, letras_tentadas):
+def Menu_Dev():
     print("""
           
     ***OPÇÕES DO DESENVOLVEDOR***
