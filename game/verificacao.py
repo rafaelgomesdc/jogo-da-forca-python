@@ -1,3 +1,5 @@
+import unicodedata
+
 def Tenta_Letra(vet_letras):
     letra = input("\nDigite a letra: ").lower()
     repetida = False
@@ -15,10 +17,17 @@ def Tenta_Letra(vet_letras):
 
     return letra
 
+def acentuacao(palavra):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', palavra)
+        if unicodedata.category(c) != 'Mn'
+    )
+
 def Verificar_Letra(letra, p_tentativa, palavra):
     erro = True
 
     for l in range(len(palavra)):
+        """
         if letra == "a":
             match palavra[l]:
                 case "á":
@@ -91,8 +100,9 @@ def Verificar_Letra(letra, p_tentativa, palavra):
                     erro = False
                 #case "u":
                 #    p_tentativa[l] = palavra[l]
+        """
         
-        if letra == palavra[l]:
+        if letra == acentuacao(palavra[l]):
             p_tentativa[l] = letra
             erro = False
         
