@@ -43,12 +43,14 @@ jogo-da-forca-python/
 │
 ├── game/
 │   ├── __init__.py
-│   ├── opcoes_dev          # Interface do modo desenvolvedor
-│   ├── opcoes.py           # Lógica
-│   ├── verificacao.py      # Lógica e validações
-│   ├── menu.py             # Interface do terminal
-│   ├── program.py          # Loop principal do jogo
-│   └── palavra.py          # Modelo da palavra
+│   ├── opcoes_dev              # Interface do modo desenvolvedor
+│   ├── opcoes.py               # Lógica
+│   ├── verificacao.py          # Lógica e validações em letras
+│   ├── verificacao_palavra.py  # Lógica e validações na palavra
+│   ├── menu.py                 # Interface do terminal
+│   ├── program.py              # Loop principal do jogo
+│   ├── utils.py                # Utilitários de acentuação
+│   └── palavra.py              # Modelo da palavra
 │
 ├── data/
 │   └── palavras.txt        # Base de palavras
