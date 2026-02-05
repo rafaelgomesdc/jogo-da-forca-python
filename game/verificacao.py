@@ -1,4 +1,4 @@
-import unicodedata
+from game.utils import acentuacao_letra
 
 def Tenta_Letra(vet_letras):
     letra = input("\nDigite a letra: ").lower()
@@ -17,17 +17,11 @@ def Tenta_Letra(vet_letras):
 
     return letra
 
-def acentuacao(palavra):
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', palavra)
-        if unicodedata.category(c) != 'Mn'
-    )
-
 def Verificar_Letra(letra, p_tentativa, palavra):
     erro = True
 
-    for l in range(len(palavra)):    
-        if letra == acentuacao(palavra[l]):
+    for l in range(len(palavra)):
+        if letra == acentuacao_letra(palavra[l]):
             p_tentativa[l] = palavra[l]
             erro = False
         

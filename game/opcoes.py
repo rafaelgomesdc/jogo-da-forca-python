@@ -1,6 +1,8 @@
 #FUNCOES
 from game.verificacao import Verificar_Letra, Tenta_Letra
 from game.opcoes_dev import Menu_Dev
+from game.verificacao_palavra import Verificar_Palavra
+import time
 
 def Opcoes(opcao, letras_tentadas, p_tentativa, p, erros):
     erro = False
@@ -9,14 +11,14 @@ def Opcoes(opcao, letras_tentadas, p_tentativa, p, erros):
             case 1:
                 erro = Verificar_Letra(Tenta_Letra(letras_tentadas), p_tentativa, p.palavra)
             case 2:
-                if input("Digite a tentativa: ") == p.palavra:
-                    print("Você Acertou!!\n")
-                    if int(input("1 = Jogar novamente\n2 = Encerrar\nOpção desejada: ")) == 1:
+                match Verificar_Palavra(input("Digite a tentativa: "), p.palavra):
+                    case "acertou_reiniciar":
                         return "reiniciar" #Atencao
-                    else:
+                    case "acertou_finalizar":
                         return "break" #Atencao
-                else:
-                    print("Palavra incorreta.")
+                    case "errou":
+                        print("\nPalavra incorreta.")
+                        time.sleep(2)
             case 3:
                 return "break" #Atencao
             case 9:
